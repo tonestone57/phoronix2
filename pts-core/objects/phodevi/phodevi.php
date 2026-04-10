@@ -718,6 +718,17 @@ class phodevi extends phodevi_base
 			$uptime = trim(shell_exec('powershell -NoProfile "((get-date) - (gcim Win32_OperatingSystem).LastBootUpTime).TotalSeconds"'));
 			$uptime = is_numeric($uptime) && $uptime > 1 ? round($uptime) : 1;
 		}
+		else if(phodevi::is_haiku())
+		{
+			$sysinfo = phodevi_haiku_parser::read_sysinfo('/Uptime:\s*(\d+)\s*days?,\s*(\d+):(\d+):(\d+)/i');
+			if(is_array($sysinfo) && isset($sysinfo[0]))
+			{
+				if(preg_match('/Uptime:\s*(\d+)\s*days?,\s*(\d+):(\d+):(\d+)/i', $sysinfo[0], $matches))
+				{
+					$uptime = ($matches[1] * 86400) + ($matches[2] * 3600) + ($matches[3] * 60) + $matches[4];
+				}
+			}
+		}
 		else if(is_file('/proc/uptime'))
 		{
 			$uptime = pts_strings::first_in_string(pts_file_io::file_get_contents('/proc/uptime'));

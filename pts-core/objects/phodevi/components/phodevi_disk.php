@@ -306,6 +306,25 @@ class phodevi_disk extends phodevi_device_interface
 				}
 			}
 		}
+		else if(phodevi::is_haiku())
+		{
+			if(pts_client::executable_in_path('driveinfo'))
+			{
+				$driveinfo = shell_exec('driveinfo 2>/dev/null');
+				$lines = explode(PHP_EOL, $driveinfo);
+				foreach($lines as $line)
+				{
+					if(($x = strpos($line, 'model:')) !== false)
+					{
+						$model = trim(substr($line, $x + 6));
+						if(!empty($model))
+						{
+							array_push($disks, $model);
+						}
+					}
+				}
+			}
+		}
 		else if(phodevi::is_windows())
 		{
  			$models = phodevi_windows_parser::get_wmi_object_multi('Win32_DiskDrive', 'Model');

@@ -1187,6 +1187,25 @@ class phodevi_system extends phodevi_device_interface
 		{
 			$kernel_arch = php_uname('m');
 
+			if(phodevi::is_haiku())
+			{
+				// Check sysinfo or just output of uname -m to determine x86 vs x86_64 correctly
+				// Haiku's uname -m output usually reflects the architecture accurately.
+				// However, if needed, we can parse sysinfo:
+				$sysinfo = phodevi_haiku_parser::read_sysinfo('/64-bit|32-bit/i');
+				if(is_array($sysinfo) && count($sysinfo) > 0)
+				{
+					if(stripos($sysinfo[0], '64-bit') !== false)
+					{
+						$kernel_arch = 'x86_64';
+					}
+					else if(stripos($sysinfo[0], '32-bit') !== false)
+					{
+						$kernel_arch = 'x86'; // Legacy hybrid
+					}
+				}
+			}
+
 			switch($kernel_arch)
 			{
 				case 'X86-64':

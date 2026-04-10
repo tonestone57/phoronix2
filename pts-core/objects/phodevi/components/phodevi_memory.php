@@ -397,6 +397,17 @@ class phodevi_memory extends phodevi_device_interface
 				$info = null;
 			}
 		}
+		else if(phodevi::is_haiku())
+		{
+			$sysinfo = phodevi_haiku_parser::read_sysinfo('/maximum memory:?\s+/i');
+			if(is_array($sysinfo) && isset($sysinfo[0]))
+			{
+				$info = $sysinfo[0];
+				$info = trim(str_ireplace('maximum memory:', '', $info));
+				$info = trim(str_ireplace('maximum memory', '', $info));
+				$info = pts_math::number_with_unit_to_mb($info);
+			}
+		}
 		else
 		{
 			$info = null;
