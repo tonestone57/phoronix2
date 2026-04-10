@@ -287,6 +287,10 @@ class phodevi_system extends phodevi_device_interface
 				}
 			}
 		}
+		else if(phodevi::is_haiku())
+		{
+			$fs = 'bfs';
+		}
 		else if(phodevi::is_linux() || phodevi::is_solaris())
 		{
 			$fs = shell_exec('stat ' . pts_client::test_install_root_path() . ' -L -f -c %T 2> /dev/null');
@@ -425,6 +429,10 @@ class phodevi_system extends phodevi_device_interface
 					$fs = implode(' + ', $fs_r);
 				}
 			}
+		}
+		else if(phodevi::is_haiku())
+		{
+			$fs = 'bfs';
 		}
 		else if(phodevi::is_windows())
 		{
@@ -1236,6 +1244,10 @@ class phodevi_system extends phodevi_device_interface
 		else if(phodevi::is_windows())
 		{
 			$os_version = phodevi_windows_parser::get_wmi_object('win32_operatingsystem', 'BuildNumber');
+		}
+		else if(phodevi::is_haiku())
+		{
+			$os_version = php_uname('v');
 		}
 		else
 		{
