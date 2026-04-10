@@ -191,7 +191,7 @@
 						<flags>TEST_REQUIRES</flags>
 						<dynamic_list_multi>pts_types.known_operating_systems</dynamic_list_multi>
 					</xs:appinfo>
-					<xs:documentation>SupportedPlatforms is used for listing the supported software platforms / operating systems that the test profile is compatible with. Currently recognized options include Linux, Windows, BSD, MacOSX, and Solaris. Multiple platforms can be specified when delimited by a common and space. If no restrictions, the tag can be blank.</xs:documentation>
+					<xs:documentation>SupportedPlatforms is used for listing the supported software platforms / operating systems that the test profile is compatible with. Currently recognized options include Linux, Windows, BSD, MacOSX, Haiku, and Solaris. Multiple platforms can be specified when delimited by a common and space. If no restrictions, the tag can be blank.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="SoftwareType" type="SoftwareType" minOccurs="0" maxOccurs="1">

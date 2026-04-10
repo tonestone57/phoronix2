@@ -42,7 +42,8 @@ class phodevi extends phodevi_base
 		'bsd' => false,
 		'hurd' => false,
 		'minix' => false,
-		'windows' => false
+		'windows' => false,
+		'haiku' => false
 		);
 
 	// A variable that modules can use to override Phodevi caching support, etc
@@ -981,6 +982,10 @@ class phodevi extends phodevi_base
 	public static function is_windows()
 	{
 		return self::$operating_systems['windows'];
+	}
+	public static function is_haiku()
+	{
+		return self::$operating_systems['haiku'];
 	}
 	public static function is_mesa_graphics()
 	{
