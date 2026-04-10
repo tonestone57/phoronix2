@@ -141,6 +141,14 @@ class phodevi_cpu extends phodevi_device_interface
 				$info = phodevi_osx_parser::read_osx_system_profiler('SPHardwareDataType', 'TotalNumberOfCores');
 			}
 		}
+		else if(phodevi::is_haiku())
+		{
+			$sysinfo = phodevi_haiku_parser::read_sysinfo('/CPU #\d+:?\s+/i');
+			if(is_array($sysinfo))
+			{
+				$info = count($sysinfo);
+			}
+		}
 
 		if(phodevi::is_windows())
 		{
@@ -664,6 +672,22 @@ class phodevi_cpu extends phodevi_device_interface
 			if(empty($info))
 			{
 				$info = phodevi_osx_parser::read_osx_system_profiler('SPHardwareDataType', 'ProcessorName');
+			}
+		}
+		else if(phodevi::is_haiku())
+		{
+			$sysinfo = phodevi_haiku_parser::read_sysinfo('/CPU #0:?\s+/i');
+			if(is_array($sysinfo) && isset($sysinfo[0]))
+			{
+				$info = $sysinfo[0];
+				if(($x = strpos($info, '"')) !== false)
+				{
+					$info = substr($info, $x + 1);
+					if(($x = strpos($info, '"')) !== false)
+					{
+						$info = substr($info, 0, $x);
+					}
+				}
 			}
 		}
 		else if(phodevi::is_windows())

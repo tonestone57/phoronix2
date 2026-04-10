@@ -472,6 +472,10 @@ class phodevi_motherboard extends phodevi_device_interface
 		{
 			$info = phodevi_osx_parser::read_osx_system_profiler('SPHardwareDataType', 'ModelName');
 		}
+		else if(phodevi::is_haiku())
+		{
+			$info = null; // Motherboard detection not easily available via sysinfo
+		}
 		else if(phodevi::is_solaris())
 		{
 			$manufacturer = phodevi_solaris_parser::read_sun_ddu_dmi_info(array('MotherBoardInformation,Manufacturer', 'SystemInformation,Manufacturer'));

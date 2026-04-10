@@ -287,6 +287,27 @@ class phodevi_system extends phodevi_device_interface
 				}
 			}
 		}
+		else if(phodevi::is_haiku())
+		{
+			if(pts_client::executable_in_path('df'))
+			{
+				$df = shell_exec('df -T ' . pts_client::test_install_root_path() . ' 2>&1');
+				$lines = explode(PHP_EOL, $df);
+				if(isset($lines[1]))
+				{
+					$parts = preg_split('/\s+/', $lines[1]);
+					if(isset($parts[1]))
+					{
+						$fs = trim($parts[1]);
+					}
+				}
+			}
+
+			if(empty($fs))
+			{
+				$fs = 'bfs';
+			}
+		}
 		else if(phodevi::is_linux() || phodevi::is_solaris())
 		{
 			$fs = shell_exec('stat ' . pts_client::test_install_root_path() . ' -L -f -c %T 2> /dev/null');
@@ -425,6 +446,10 @@ class phodevi_system extends phodevi_device_interface
 					$fs = implode(' + ', $fs_r);
 				}
 			}
+		}
+		else if(phodevi::is_haiku())
+		{
+			$fs = 'bfs';
 		}
 		else if(phodevi::is_windows())
 		{
@@ -1179,6 +1204,25 @@ class phodevi_system extends phodevi_device_interface
 		{
 			$kernel_arch = php_uname('m');
 
+			if(phodevi::is_haiku())
+			{
+				// Check sysinfo or just output of uname -m to determine x86 vs x86_64 correctly
+				// Haiku's uname -m output usually reflects the architecture accurately.
+				// However, if needed, we can parse sysinfo:
+				$sysinfo = phodevi_haiku_parser::read_sysinfo('/64-bit|32-bit/i');
+				if(is_array($sysinfo) && count($sysinfo) > 0)
+				{
+					if(stripos($sysinfo[0], '64-bit') !== false)
+					{
+						$kernel_arch = 'x86_64';
+					}
+					else if(stripos($sysinfo[0], '32-bit') !== false)
+					{
+						$kernel_arch = 'x86'; // Legacy hybrid
+					}
+				}
+			}
+
 			switch($kernel_arch)
 			{
 				case 'X86-64':
@@ -1236,6 +1280,10 @@ class phodevi_system extends phodevi_device_interface
 		else if(phodevi::is_windows())
 		{
 			$os_version = phodevi_windows_parser::get_wmi_object('win32_operatingsystem', 'BuildNumber');
+		}
+		else if(phodevi::is_haiku())
+		{
+			$os_version = php_uname('v');
 		}
 		else
 		{

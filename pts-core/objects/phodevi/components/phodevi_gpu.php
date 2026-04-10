@@ -1227,6 +1227,43 @@ class phodevi_gpu extends phodevi_device_interface
 				}
 			}
 		}
+		else if(phodevi::is_haiku())
+		{
+			$listdev = phodevi_haiku_parser::read_listdev('/Display controller/i');
+			if(is_array($listdev) && isset($listdev[0]))
+			{
+				$info = $listdev[0];
+				$lines = explode(PHP_EOL, $info);
+				$vendor = '';
+				$device = '';
+				foreach($lines as $line)
+				{
+					if(stripos($line, 'vendor') !== false)
+					{
+						$vendor = trim(substr($line, strpos($line, ':') + 1));
+						$vendor = str_replace(array('[', ']'), '', $vendor);
+					}
+					else if(stripos($line, 'device') !== false && stripos($line, 'Display controller') === false)
+					{
+						$device = trim(substr($line, strpos($line, ':') + 1));
+						$device = str_replace(array('[', ']'), '', $device);
+					}
+				}
+
+				if(!empty($vendor) || !empty($device))
+				{
+					$info = trim($vendor . ' ' . $device);
+				}
+				else
+				{
+					if(($x = strpos($info, 'device Display controller')) !== false)
+					{
+						$info = trim(substr($info, $x + 25));
+					}
+					$info = trim(str_replace(array('[', ']', 'device Display controller'), '', $info));
+				}
+			}
+		}
 		else if(phodevi::is_windows())
 		{
 			$windows_gpu = phodevi_windows_parser::get_wmi_object_multi('Win32_VideoController', 'Name');
