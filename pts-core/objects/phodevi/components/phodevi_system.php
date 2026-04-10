@@ -289,7 +289,24 @@ class phodevi_system extends phodevi_device_interface
 		}
 		else if(phodevi::is_haiku())
 		{
-			$fs = 'bfs';
+			if(pts_client::executable_in_path('df'))
+			{
+				$df = shell_exec('df -T ' . pts_client::test_install_root_path() . ' 2>&1');
+				$lines = explode(PHP_EOL, $df);
+				if(isset($lines[1]))
+				{
+					$parts = preg_split('/\s+/', $lines[1]);
+					if(isset($parts[1]))
+					{
+						$fs = trim($parts[1]);
+					}
+				}
+			}
+
+			if(empty($fs))
+			{
+				$fs = 'bfs';
+			}
 		}
 		else if(phodevi::is_linux() || phodevi::is_solaris())
 		{
