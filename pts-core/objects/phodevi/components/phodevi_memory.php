@@ -338,6 +338,8 @@ class phodevi_memory extends phodevi_device_interface
 	}
 	public static function memory_capacity()
 	{
+		$info = null;
+
 		// Returns physical memory capacity
 		if(isset(phodevi::$vfs->meminfo))
 		{
@@ -408,11 +410,6 @@ class phodevi_memory extends phodevi_device_interface
 				$info = pts_math::number_with_unit_to_mb($info);
 			}
 		}
-		else
-		{
-			$info = null;
-		}
-
 		return $info;
 	}
 }
