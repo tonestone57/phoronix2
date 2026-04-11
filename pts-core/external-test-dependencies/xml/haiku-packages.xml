@@ -61,5 +61,45 @@
 			<GenericName>glibc-development</GenericName>
 			<PossibleNames>haiku_devel</PossibleNames>
 		</Package>
+		<Package>
+			<GenericName>perl</GenericName>
+			<PossibleNames>perl</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>autoconf</GenericName>
+			<PossibleNames>autoconf</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>libtool</GenericName>
+			<PossibleNames>libtool</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>pkgconfig</GenericName>
+			<PossibleNames>pkgconfig</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>m4</GenericName>
+			<PossibleNames>m4</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>patch</GenericName>
+			<PossibleNames>patch</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>curl</GenericName>
+			<PossibleNames>curl, curl_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>ncurses-development</GenericName>
+			<PossibleNames>ncurses_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>jpeg-development</GenericName>
+			<PossibleNames>libjpeg_turbo_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>libpng-development</GenericName>
+			<PossibleNames>libpng16_devel</PossibleNames>
+		</Package>
 	</ExternalDependencies>
 </PhoronixTestSuite>

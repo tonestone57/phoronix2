@@ -1343,6 +1343,10 @@ class phodevi_system extends phodevi_device_interface
 		{
 			$vendor = php_uname('v');
 		}
+		else if(phodevi::is_haiku())
+		{
+			$vendor = 'Haiku';
+		}
 		else
 		{
 			$vendor = null;
