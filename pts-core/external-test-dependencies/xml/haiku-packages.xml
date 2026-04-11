@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <PhoronixTestSuite>
 	<ExternalDependencies>
+		<Information>
+			<Name>Haiku</Name>
+			<PackageManager>pkgman</PackageManager>
+		</Information>
 		<Package>
 			<GenericName>build-utilities</GenericName>
 			<PossibleNames>gcc, make, binutils</PossibleNames>
@@ -23,7 +27,7 @@
 		</Package>
 		<Package>
 			<GenericName>openssl-development</GenericName>
-			<PossibleNames>openssl3</PossibleNames>
+			<PossibleNames>openssl3_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>sdl2-development</GenericName>
@@ -51,7 +55,7 @@
 		</Package>
 		<Package>
 			<GenericName>node-npm</GenericName>
-			<PossibleNames>nodejs20</PossibleNames>
+			<PossibleNames>nodejs20, npm</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>glibc-development</GenericName>
