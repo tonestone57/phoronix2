@@ -294,6 +294,23 @@ class phodevi_cpu extends phodevi_device_interface
 		{
 			$cache_size = phodevi_windows_parser::get_wmi_object('Win32_Processor', 'L2CacheSize');
 		}
+		else if(phodevi::is_haiku())
+		{
+			$sysinfo = phodevi_haiku_parser::read_sysinfo('/L2 cache/i');
+			if(is_array($sysinfo) && isset($sysinfo[0]))
+			{
+				$cache_size = pts_math::number_with_unit_to_mb(trim(substr($sysinfo[0], strpos($sysinfo[0], ':') + 1)));
+			}
+
+			if(empty($cache_size))
+			{
+				$sysinfo = phodevi_haiku_parser::read_sysinfo('/L3 cache/i');
+				if(is_array($sysinfo) && isset($sysinfo[0]))
+				{
+					$cache_size = pts_math::number_with_unit_to_mb(trim(substr($sysinfo[0], strpos($sysinfo[0], ':') + 1)));
+				}
+			}
+		}
 
 		return $cache_size;
 	}
@@ -522,6 +539,17 @@ class phodevi_cpu extends phodevi_device_interface
 			else
 			{
 				$info = null;
+			}
+		}
+		else if($info == null && phodevi::is_haiku())
+		{
+			$sysinfo = phodevi_haiku_parser::read_sysinfo('/running at (\d+) MHz/i');
+			if(is_array($sysinfo) && isset($sysinfo[0]))
+			{
+				if(preg_match('/running at (\d+) MHz/i', $sysinfo[0], $matches))
+				{
+					$info = $matches[1] / 1000;
+				}
 			}
 		}
 		else if($info == null)

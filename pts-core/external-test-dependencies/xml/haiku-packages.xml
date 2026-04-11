@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<PhoronixTestSuite>
+	<ExternalDependencies>
+		<Package>
+			<GenericName>build-utilities</GenericName>
+			<PossibleNames>gcc, make, binutils</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>cmake</GenericName>
+			<PossibleNames>cmake</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>git</GenericName>
+			<PossibleNames>git</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>python</GenericName>
+			<PossibleNames>python3, python3_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>zlib-development</GenericName>
+			<PossibleNames>zlib_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>openssl-development</GenericName>
+			<PossibleNames>openssl_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>sdl2-development</GenericName>
+			<PossibleNames>libsdl2_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>sqlite</GenericName>
+			<PossibleNames>sqlite, sqlite_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>p7zip</GenericName>
+			<PossibleNames>p7zip</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>bc</GenericName>
+			<PossibleNames>bc</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>bison</GenericName>
+			<PossibleNames>bison</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>flex</GenericName>
+			<PossibleNames>flex</PossibleNames>
+		</Package>
+	</ExternalDependencies>
+</PhoronixTestSuite>
