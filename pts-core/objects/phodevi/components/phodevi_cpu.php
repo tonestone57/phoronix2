@@ -1618,11 +1618,11 @@ class phodevi_cpu extends phodevi_device_interface
 				),
 			);
 
-		if(($cpu_string == null || strpos($cpu_string, 'AMD') !== false || strpos($cpu_string, ' Athlon') !== false) && isset($amd_map[$family][$model]))
+		if(($cpu_string == null || strpos($cpu_string, 'AMD') !== false || strpos($cpu_string, ' Athlon') !== false) && $family !== null && $model !== null && isset($amd_map[$family][$model]))
 		{
 			return $amd_map[$family][$model];
 		}
-		if(($cpu_string == null || stripos($cpu_string, 'Intel') !== false) && isset($intel_map[$family][$model]))
+		if(($cpu_string == null || stripos($cpu_string, 'Intel') !== false) && $family !== null && $model !== null && isset($intel_map[$family][$model]))
 		{
 			return $intel_map[$family][$model];
 		}
