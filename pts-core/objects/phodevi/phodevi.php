@@ -1020,7 +1020,7 @@ class phodevi extends phodevi_base
 			return false;
 		}
 
-		return getenv('DISPLAY') != false || getenv('WAYLAND_DISPLAY') != false || phodevi::is_windows() || phodevi::is_macos();
+		return getenv('DISPLAY') != false || getenv('WAYLAND_DISPLAY') != false || phodevi::is_windows() || phodevi::is_macos() || phodevi::is_haiku();
 	}
 }
 
