@@ -71,7 +71,9 @@
 		</Package>
 		<Package>
 			<GenericName>libtool</GenericName>
+			<Title>Libtool</Title>
 			<PossibleNames>libtool</PossibleNames>
+			<FileCheck>libtool OR libtoolize</FileCheck>
 		</Package>
 		<Package>
 			<GenericName>pkgconfig</GenericName>
