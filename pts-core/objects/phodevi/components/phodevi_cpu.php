@@ -543,12 +543,12 @@ class phodevi_cpu extends phodevi_device_interface
 		}
 		else if($info == null && phodevi::is_haiku())
 		{
-			$sysinfo = phodevi_haiku_parser::read_sysinfo('/running at (\d+) MHz/i');
+			$sysinfo = phodevi_haiku_parser::read_sysinfo('/(running at|current speed:)\s+(\d+)\s+MHz/i');
 			if(is_array($sysinfo) && isset($sysinfo[0]))
 			{
-				if(preg_match('/running at (\d+) MHz/i', $sysinfo[0], $matches))
+				if(preg_match('/(running at|current speed:)\s+(\d+)\s+MHz/i', $sysinfo[0], $matches))
 				{
-					$info = $matches[1] / 1000;
+					$info = $matches[2] / 1000;
 				}
 			}
 		}

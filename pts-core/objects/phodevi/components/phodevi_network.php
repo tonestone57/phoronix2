@@ -81,7 +81,12 @@ class phodevi_network extends phodevi_device_interface
 				{
 					$parts = preg_split('/\s+/', trim($line));
 					$dev = array_pop($parts);
-					if(($x = strrpos($dev, '/')) !== false)
+
+					if(strpos($dev, '/dev/net/') === 0)
+					{
+						$dev = substr($dev, 9);
+					}
+					else if(($x = strrpos($dev, '/')) !== false)
 					{
 						$dev = substr($dev, $x + 1);
 					}
