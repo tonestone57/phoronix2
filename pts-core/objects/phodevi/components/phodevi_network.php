@@ -66,6 +66,30 @@ class phodevi_network extends phodevi_device_interface
 				}
 			}
 		}
+
+		if(empty($dev) && phodevi::is_haiku() && ($route = pts_client::executable_in_path('route')))
+		{
+			$out = shell_exec("$route list 2>&1");
+			// Haiku route list output:
+			// Destination      Mask             Gateway          Device
+			// ---------------------------------------------------------
+			// default          0.0.0.0          10.0.2.2         /dev/net/virtio/0
+			$lines = explode(PHP_EOL, $out);
+			foreach($lines as $line)
+			{
+				if(strpos($line, 'default') === 0)
+				{
+					$parts = preg_split('/\s+/', trim($line));
+					$dev = array_pop($parts);
+					if(($x = strrpos($dev, '/')) !== false)
+					{
+						$dev = substr($dev, $x + 1);
+					}
+					break;
+				}
+			}
+		}
+
 		return $dev;
 	}
 	public static function get_ip()
@@ -297,6 +321,37 @@ class phodevi_network extends phodevi_device_interface
 			if(!empty($pci))
 			{
 				$network = $pci;
+			}
+		}
+		else if(phodevi::is_haiku())
+		{
+			$listdev = phodevi_haiku_parser::read_listdev('/Network controller|Ethernet controller/i');
+			if(is_array($listdev))
+			{
+				foreach($listdev as $dev)
+				{
+					$lines = explode(PHP_EOL, $dev);
+					$vendor = '';
+					$device = '';
+					foreach($lines as $line)
+					{
+						if(stripos($line, 'vendor') !== false)
+						{
+							$vendor = trim(substr($line, strpos($line, ':') + 1));
+							$vendor = str_replace(array('[', ']'), '', $vendor);
+						}
+						else if(stripos($line, 'device') !== false && stripos($line, 'controller') === false)
+						{
+							$device = trim(substr($line, strpos($line, ':') + 1));
+							$device = str_replace(array('[', ']'), '', $device);
+						}
+					}
+
+					if(!empty($vendor) || !empty($device))
+					{
+						array_push($network, trim($vendor . ' ' . $device));
+					}
+				}
 			}
 		}
 

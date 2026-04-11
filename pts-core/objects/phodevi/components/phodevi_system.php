@@ -1648,6 +1648,10 @@ class phodevi_system extends phodevi_device_interface
 				$desktop .= ' ' . $desktop_version;
 			}
 		}
+		else if(phodevi::is_haiku())
+		{
+			$desktop = 'Haiku Desktop';
+		}
 
 		return $desktop;
 	}
@@ -1733,6 +1737,11 @@ class phodevi_system extends phodevi_device_interface
 			if(getenv('WAYLAND_DISPLAY') != false)
 			{
 				array_push($display_servers, 'Wayland');
+			}
+
+			if(phodevi::is_haiku())
+			{
+				array_push($display_servers, 'Haiku App Server');
 			}
 		}
 

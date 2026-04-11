@@ -23,7 +23,12 @@
 
 if [ "X$1" = "X" ]
 then
-	INSTALL_PREFIX="/usr"
+	if [ `uname -s` = "Haiku" ]
+	then
+		INSTALL_PREFIX="/boot/system/non-packaged"
+	else
+		INSTALL_PREFIX="/usr"
+	fi
 else
 	INSTALL_PREFIX="$1"
 fi
