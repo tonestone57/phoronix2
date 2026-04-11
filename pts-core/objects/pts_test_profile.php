@@ -405,6 +405,11 @@ class pts_test_profile extends pts_test_profile_parser
 				// TODO: fill in Hurd support for test profiles / see what works
 				$supported = true;
 			}
+			else if(phodevi::is_haiku() && in_array('Linux', $platforms) && in_array('BSD', $platforms))
+			{
+				// For now until test profiles explicity express Haiku support, just list as supported the tests that work on both BSD and Linux
+				$supported = true;
+			}
 			else
 			{
 				$supported = false;
