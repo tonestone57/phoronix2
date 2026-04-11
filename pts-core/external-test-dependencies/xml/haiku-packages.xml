@@ -1,9 +1,13 @@
 <?xml version="1.0"?>
 <PhoronixTestSuite>
 	<ExternalDependencies>
+		<Information>
+			<Name>Haiku</Name>
+			<PackageManager>pkgman</PackageManager>
+		</Information>
 		<Package>
 			<GenericName>build-utilities</GenericName>
-			<PossibleNames>gcc, make, binutils</PossibleNames>
+			<PossibleNames>gcc, make, binutils, haiku_devel, devel:libutil, devel:libexecinfo</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>cmake</GenericName>
@@ -15,7 +19,7 @@
 		</Package>
 		<Package>
 			<GenericName>python</GenericName>
-			<PossibleNames>python3, python3_devel</PossibleNames>
+			<PossibleNames>python3.14</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>zlib-development</GenericName>
@@ -23,7 +27,7 @@
 		</Package>
 		<Package>
 			<GenericName>openssl-development</GenericName>
-			<PossibleNames>openssl_devel</PossibleNames>
+			<PossibleNames>openssl3_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>sdl2-development</GenericName>
@@ -48,6 +52,14 @@
 		<Package>
 			<GenericName>flex</GenericName>
 			<PossibleNames>flex</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>node-npm</GenericName>
+			<PossibleNames>nodejs20, npm</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>glibc-development</GenericName>
+			<PossibleNames>haiku_devel</PossibleNames>
 		</Package>
 	</ExternalDependencies>
 </PhoronixTestSuite>
