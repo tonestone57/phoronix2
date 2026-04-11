@@ -293,17 +293,23 @@ class phodevi_system extends phodevi_device_interface
 			{
 				$df = shell_exec('df ' . pts_client::test_install_root_path() . ' 2>&1');
 				$lines = explode(PHP_EOL, trim($df));
-				if(isset($lines[1]))
+
+				$fs_types = array('bfs', 'packagefs', 'ramfs', 'rootfs', 'ext2', 'ext3', 'fat', 'ntfs', 'iso9660');
+				foreach($lines as $line)
 				{
-					$parts = preg_split('/\s+/', $lines[1]);
-					if(isset($parts[1]))
+					$line_t = strtolower(trim($line));
+					foreach($fs_types as $type)
 					{
-						$fs = trim($parts[1]);
+						if(strpos($line_t, $type) !== false)
+						{
+							$fs = $type;
+							break 2;
+						}
 					}
 				}
 			}
 
-			if(empty($fs) || $fs == 'Type' || $fs == '-')
+			if(empty($fs) || $fs == 'Type' || $fs == '-' || stripos($fs, 'Mount') !== false || is_numeric($fs))
 			{
 				$fs = 'bfs';
 			}

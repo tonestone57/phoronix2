@@ -543,12 +543,40 @@ class phodevi_cpu extends phodevi_device_interface
 		}
 		else if($info == null && phodevi::is_haiku())
 		{
-			$sysinfo = phodevi_haiku_parser::read_sysinfo('/(running at|current speed:)\s+(\d+)\s+MHz/i');
+			$sysinfo = phodevi_haiku_parser::read_sysinfo('/(running at|current speed:|speed:|frequency:)\s+(\d+)\s*MHz/i');
+
+			if(empty($sysinfo))
+			{
+				$sysinfo = phodevi_haiku_parser::read_sysinfo('/Frequency:\s+([\d\.]+)/i');
+			}
+
 			if(is_array($sysinfo) && isset($sysinfo[0]))
 			{
-				if(preg_match('/(running at|current speed:)\s+(\d+)\s+MHz/i', $sysinfo[0], $matches))
+				if(preg_match('/(running at|current speed:|speed:|frequency:)\s+(\d+)\s*MHz/i', $sysinfo[0], $matches))
 				{
 					$info = $matches[2] / 1000;
+				}
+				else if(preg_match('/Frequency:\s+([\d\.]+)/i', $sysinfo[0], $matches))
+				{
+					$info = $matches[1] / 1000;
+				}
+			}
+
+			if(empty($info))
+			{
+				// Fallback: parse from model string if available, e.g. "Intel Core i5-8265U @ 1.60GHz"
+				$model = phodevi::read_property('cpu', 'model');
+				if(($x = strpos($model, '@ ')) !== false)
+				{
+					$freq_str = substr($model, $x + 2);
+					if(stripos($freq_str, 'GHz') !== false)
+					{
+						$info = floatval($freq_str);
+					}
+					else if(stripos($freq_str, 'MHz') !== false)
+					{
+						$info = floatval($freq_str) / 1000;
+					}
 				}
 			}
 		}
