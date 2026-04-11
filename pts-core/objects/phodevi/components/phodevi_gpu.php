@@ -1238,15 +1238,14 @@ class phodevi_gpu extends phodevi_device_interface
 				$device = '';
 				foreach($lines as $line)
 				{
-					if(stripos($line, 'vendor') !== false)
+					$line_t = trim($line);
+					if(strpos($line_t, 'vendor ') === 0 && strpos($line_t, ':') !== false)
 					{
-						$vendor = trim(substr($line, strpos($line, ':') + 1));
-						$vendor = str_replace(array('[', ']'), '', $vendor);
+						$vendor = trim(substr($line_t, strpos($line_t, ':') + 1));
 					}
-					else if(stripos($line, 'device') !== false && stripos($line, 'Display controller') === false)
+					else if(strpos($line_t, 'device ') === 0 && strpos($line_t, ':') !== false)
 					{
-						$device = trim(substr($line, strpos($line, ':') + 1));
-						$device = str_replace(array('[', ']'), '', $device);
+						$device = trim(substr($line_t, strpos($line_t, ':') + 1));
 					}
 				}
 
@@ -1256,12 +1255,10 @@ class phodevi_gpu extends phodevi_device_interface
 				}
 				else
 				{
-					if(($x = strpos($info, 'device Display controller')) !== false)
-					{
-						$info = trim(substr($info, $x + 25));
-					}
-					$info = trim(str_replace(array('[', ']', 'device Display controller'), '', $info));
+					$info = trim(preg_replace('/device Display controller\s+\[[^\]]+\]/i', '', $info));
 				}
+				$info = str_replace(array('[', ']', 'Display controller'), '', $info);
+				$info = pts_strings::trim_spaces(str_replace('  ', ' ', $info));
 			}
 		}
 		else if(phodevi::is_windows())

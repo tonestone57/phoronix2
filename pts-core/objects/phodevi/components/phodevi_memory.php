@@ -401,13 +401,49 @@ class phodevi_memory extends phodevi_device_interface
 		}
 		else if(phodevi::is_haiku())
 		{
-			$sysinfo = phodevi_haiku_parser::read_sysinfo('/maximum memory:?\s+/i');
+			$sysinfo = phodevi_haiku_parser::read_sysinfo('/(maximum|total|available|used\/max)\s+memory:?\s+/i');
+
+			if(empty($sysinfo))
+			{
+				// Method for standard sysinfo output
+				$sysinfo = phodevi_haiku_parser::read_sysinfo('/(used\/max\s+\d+\s+\/\s+\d+)/i');
+			}
+
 			if(is_array($sysinfo) && isset($sysinfo[0]))
 			{
 				$info = $sysinfo[0];
-				$info = trim(str_ireplace('maximum memory:', '', $info));
-				$info = trim(str_ireplace('maximum memory', '', $info));
+
+				if(stripos($info, 'used/max') !== false)
+				{
+					$info = substr($info, strrpos($info, '/') + 1);
+				}
+				else
+				{
+					$info = trim(substr($info, strpos($info, ':') + 1));
+				}
+
+				if(($x = strpos($info, '(')) !== false)
+				{
+					// If there is e.g. "8589934592 (8.00 GiB)"
+					$info = substr($info, $x + 1);
+					if(($x = strpos($info, ')')) !== false)
+					{
+						$info = substr($info, 0, $x);
+					}
+				}
+
 				$info = pts_math::number_with_unit_to_mb($info);
+			}
+
+			if(empty($info))
+			{
+				// Fallback: look for generic Memory: line
+				$sysinfo = phodevi_haiku_parser::read_sysinfo('/Memory:?\s+/i');
+				if(is_array($sysinfo) && isset($sysinfo[0]))
+				{
+					$info = trim(substr($sysinfo[0], strpos($sysinfo[0], ':') + 1));
+					$info = pts_math::number_with_unit_to_mb($info);
+				}
 			}
 		}
 		return $info;

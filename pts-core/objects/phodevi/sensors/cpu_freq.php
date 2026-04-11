@@ -91,12 +91,56 @@ class cpu_freq extends phodevi_sensor
 		{
 			$frequency = $this->cpu_freq_macosx();
 		}
+		else if(phodevi::is_haiku())
+		{
+			$frequency = $this->cpu_freq_haiku();
+		}
 		else if(phodevi::is_windows())
 		{
 			return false;
 		}
 
 		return pts_math::set_precision($frequency, 2);
+	}
+	private function cpu_freq_haiku()
+	{
+		$frequency = -1;
+		$sysinfo = phodevi_haiku_parser::read_sysinfo('/(running at|current speed:|speed:|frequency:)\s+(\d+)\s*MHz/i');
+
+		if(empty($sysinfo))
+		{
+			$sysinfo = phodevi_haiku_parser::read_sysinfo('/Frequency:\s+([\d\.]+)/i');
+		}
+
+		if(is_array($sysinfo))
+		{
+			$cpu_number = intval(substr($this->cpu_to_monitor, 3));
+			if(isset($sysinfo[$cpu_number]))
+			{
+				if(preg_match('/(running at|current speed:|speed:|frequency:)\s+(\d+)\s*MHz/i', $sysinfo[$cpu_number], $matches))
+				{
+					$frequency = $matches[2];
+				}
+				else if(preg_match('/Frequency:\s+([\d\.]+)/i', $sysinfo[$cpu_number], $matches))
+				{
+					$frequency = $matches[1];
+				}
+			}
+			else if(isset($sysinfo[0]))
+			{
+				// Fallback to first CPU if requested not found
+				if(preg_match('/(running at|current speed:|speed:|frequency:)\s+(\d+)\s*MHz/i', $sysinfo[0], $matches))
+				{
+					$frequency = $matches[2];
+				}
+				else if(preg_match('/Frequency:\s+([\d\.]+)/i', $sysinfo[0], $matches))
+				{
+					$frequency = $matches[1];
+				}
+			}
+		}
+
+		return $frequency;
 	}
 	private function cpu_freq_linux()
 	{

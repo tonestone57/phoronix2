@@ -51,6 +51,40 @@ class phodevi_chipset extends phodevi_device_interface
 			// TODO: Can't find Northbridge
 			$info = $sb_vendor . ' ' . $sb_product;
 		}
+		else if(phodevi::is_haiku())
+		{
+			$listdev = phodevi_haiku_parser::read_listdev('/Host bridge/i');
+			if(is_array($listdev) && isset($listdev[0]))
+			{
+				$info = $listdev[0];
+				$lines = explode(PHP_EOL, $info);
+				$vendor = '';
+				$device = '';
+				foreach($lines as $line)
+				{
+					$line_t = trim($line);
+					if(strpos($line_t, 'vendor ') === 0 && strpos($line_t, ':') !== false)
+					{
+						$vendor = trim(substr($line_t, strpos($line_t, ':') + 1));
+					}
+					else if(strpos($line_t, 'device ') === 0 && strpos($line_t, ':') !== false)
+					{
+						$device = trim(substr($line_t, strpos($line_t, ':') + 1));
+					}
+				}
+
+				if(!empty($vendor) || !empty($device))
+				{
+					$info = trim($vendor . ' ' . $device);
+				}
+				else
+				{
+					$info = trim(preg_replace('/device Host bridge\s+\[[^\]]+\]/i', '', $info));
+				}
+				$info = str_replace(array('[', ']', 'Host bridge'), '', $info);
+				$info = pts_strings::trim_spaces(str_replace('  ', ' ', $info));
+			}
+		}
 		else if(phodevi::is_windows())
 		{
 			// TODO XXX figure out
