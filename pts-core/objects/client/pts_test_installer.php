@@ -704,9 +704,17 @@ class pts_test_installer
 					$env_var_check .= 'COMPILER_OPTIONS=`echo "$COMPILER_OPTIONS" | sed -e "s/\-march=/-mcpu=/g"`' . PHP_EOL;
 				}
 
-				if(is_executable('/bin/bash'))
+				if(is_executable('/boot/system/bin/bash'))
+				{
+					$shebang = '/boot/system/bin/bash';
+				}
+				else if(is_executable('/bin/bash'))
 				{
 					$shebang = '/bin/bash';
+				}
+				else if(is_executable('/boot/system/bin/env'))
+				{
+					$shebang = '/boot/system/bin/env bash';
 				}
 				else if(is_executable('/usr/bin/env'))
 				{

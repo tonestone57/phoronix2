@@ -1763,6 +1763,10 @@ class pts_client
 			{
 				$path = 'C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Users\\' . getenv('USERNAME') . '\AppData\Local\Microsoft\WindowsApps;';
 			}
+			else if(phodevi::is_haiku())
+			{
+				$path = '/boot/system/bin:/boot/system/non-packaged/bin:/bin';
+			}
 			else
 			{
 				$path = '/bin:/usr/sbin:/usr/bin:/usr/local/bin:/usr/pkg/bin:/usr/games';

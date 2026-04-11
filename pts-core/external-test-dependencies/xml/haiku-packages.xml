@@ -15,7 +15,7 @@
 		</Package>
 		<Package>
 			<GenericName>python</GenericName>
-			<PossibleNames>python3, python3_devel</PossibleNames>
+			<PossibleNames>python3.14</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>zlib-development</GenericName>
@@ -23,7 +23,7 @@
 		</Package>
 		<Package>
 			<GenericName>openssl-development</GenericName>
-			<PossibleNames>openssl_devel</PossibleNames>
+			<PossibleNames>openssl3</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>sdl2-development</GenericName>
@@ -48,6 +48,14 @@
 		<Package>
 			<GenericName>flex</GenericName>
 			<PossibleNames>flex</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>node-npm</GenericName>
+			<PossibleNames>nodejs20</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>glibc-development</GenericName>
+			<PossibleNames>libroot</PossibleNames>
 		</Package>
 	</ExternalDependencies>
 </PhoronixTestSuite>
