@@ -407,6 +407,17 @@ class phodevi_memory extends phodevi_device_interface
 				$info = $sysinfo[0];
 				$info = trim(str_ireplace('maximum memory:', '', $info));
 				$info = trim(str_ireplace('maximum memory', '', $info));
+
+				if(($x = strpos($info, '(')) !== false)
+				{
+					// If there is e.g. "8589934592 (8.00 GiB)"
+					$info = substr($info, $x + 1);
+					if(($x = strpos($info, ')')) !== false)
+					{
+						$info = substr($info, 0, $x);
+					}
+				}
+
 				$info = pts_math::number_with_unit_to_mb($info);
 			}
 		}

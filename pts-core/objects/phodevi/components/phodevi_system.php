@@ -291,8 +291,8 @@ class phodevi_system extends phodevi_device_interface
 		{
 			if(pts_client::executable_in_path('df'))
 			{
-				$df = shell_exec('df -T ' . pts_client::test_install_root_path() . ' 2>&1');
-				$lines = explode(PHP_EOL, $df);
+				$df = shell_exec('df ' . pts_client::test_install_root_path() . ' 2>&1');
+				$lines = explode(PHP_EOL, trim($df));
 				if(isset($lines[1]))
 				{
 					$parts = preg_split('/\s+/', $lines[1]);
@@ -303,7 +303,7 @@ class phodevi_system extends phodevi_device_interface
 				}
 			}
 
-			if(empty($fs))
+			if(empty($fs) || $fs == 'Type' || $fs == '-')
 			{
 				$fs = 'bfs';
 			}

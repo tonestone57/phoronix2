@@ -235,21 +235,36 @@ class pts_math
 	public static function number_with_unit_to_mb($value)
 	{
 		$value = trim($value);
+
+		if(($x = strpos($value, ' (')) !== false)
+		{
+			$value = substr($value, 0, $x);
+		}
+
 		$num = null;
 		$unit = null;
-		if(($x = strpos($value, ' ')) !== false)
+
+		if(is_numeric($value))
 		{
-			$num = substr($value, 0, $x);
-			$unit = substr($value, ($x + 1));
+			$num = $value;
+			$unit = 'B';
+		}
+		else if(($x = strrpos($value, ' ')) !== false)
+		{
+			$num = trim(substr($value, 0, $x));
+			$unit = trim(substr($value, $x + 1));
 		}
 		else
 		{
-			switch(substr($value, -1))
+			$i = strlen($value) - 1;
+			while($i >= 0 && !is_numeric($value[$i]))
 			{
-				case 'K':
-					$num = substr($value, 0, -1);
-					$unit = 'K';
-					break;
+				$i--;
+			}
+			if($i >= 0 && $i < strlen($value) - 1)
+			{
+				$num = substr($value, 0, $i + 1);
+				$unit = substr($value, $i + 1);
 			}
 		}
 
@@ -258,16 +273,30 @@ class pts_math
 	public static function unit_to_mb($value, $current_unit)
 	{
 		$v = null;
+		$current_unit = strtolower($current_unit);
+
 		switch($current_unit)
 		{
+			case 'b':
+			case 'bytes':
+				$v = $value / 1048576;
+				break;
 			case 'kb':
 				$v = $value / 1000;
 				break;
-			case 'K':
+			case 'k':
+			case 'kib':
 				$v = $value / 1024;
 				break;
-			case 'MiB':
+			case 'mb':
+			case 'mib':
 				$v = $value;
+				break;
+			case 'gb':
+				$v = $value * 1000;
+				break;
+			case 'gib':
+				$v = $value * 1024;
 				break;
 		}
 

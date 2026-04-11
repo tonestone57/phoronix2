@@ -81,7 +81,12 @@ class phodevi_network extends phodevi_device_interface
 				{
 					$parts = preg_split('/\s+/', trim($line));
 					$dev = array_pop($parts);
-					if(($x = strrpos($dev, '/')) !== false)
+
+					if(strpos($dev, '/dev/net/') === 0)
+					{
+						$dev = substr($dev, 9);
+					}
+					else if(($x = strrpos($dev, '/')) !== false)
 					{
 						$dev = substr($dev, $x + 1);
 					}
@@ -335,21 +340,31 @@ class phodevi_network extends phodevi_device_interface
 					$device = '';
 					foreach($lines as $line)
 					{
-						if(stripos($line, 'vendor') !== false)
+						$line_t = trim($line);
+						if(strpos($line_t, 'vendor ') === 0 && strpos($line_t, ':') !== false)
 						{
-							$vendor = trim(substr($line, strpos($line, ':') + 1));
-							$vendor = str_replace(array('[', ']'), '', $vendor);
+							$vendor = trim(substr($line_t, strpos($line_t, ':') + 1));
 						}
-						else if(stripos($line, 'device') !== false && stripos($line, 'controller') === false)
+						else if(strpos($line_t, 'device ') === 0 && strpos($line_t, ':') !== false)
 						{
-							$device = trim(substr($line, strpos($line, ':') + 1));
-							$device = str_replace(array('[', ']'), '', $device);
+							$device = trim(substr($line_t, strpos($line_t, ':') + 1));
 						}
 					}
 
 					if(!empty($vendor) || !empty($device))
 					{
-						array_push($network, trim($vendor . ' ' . $device));
+						$info = trim($vendor . ' ' . $device);
+					}
+					else
+					{
+						$info = trim(preg_replace('/device (Network|Ethernet) controller\s+\[[^\]]+\]/i', '', $dev));
+					}
+					$info = str_replace(array('[', ']', 'Network controller', 'Ethernet controller'), '', $info);
+					$info = pts_strings::trim_spaces(str_replace('  ', ' ', $info));
+
+					if(!empty($info))
+					{
+						array_push($network, $info);
 					}
 				}
 			}
