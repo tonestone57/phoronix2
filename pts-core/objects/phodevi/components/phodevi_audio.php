@@ -37,6 +37,40 @@ class phodevi_audio extends phodevi_device_interface
 		{
 			// TODO: implement
 		}
+		else if(phodevi::is_haiku())
+		{
+			$listdev = phodevi_haiku_parser::read_listdev('/Multimedia audio controller/i');
+			if(is_array($listdev) && isset($listdev[0]))
+			{
+				$info = $listdev[0];
+				$lines = explode(PHP_EOL, $info);
+				$vendor = '';
+				$device = '';
+				foreach($lines as $line)
+				{
+					$line_t = trim($line);
+					if(strpos($line_t, 'vendor ') === 0 && strpos($line_t, ':') !== false)
+					{
+						$vendor = trim(substr($line_t, strpos($line_t, ':') + 1));
+					}
+					else if(strpos($line_t, 'device ') === 0 && strpos($line_t, ':') !== false)
+					{
+						$device = trim(substr($line_t, strpos($line_t, ':') + 1));
+					}
+				}
+
+				if(!empty($vendor) || !empty($device))
+				{
+					$audio = trim($vendor . ' ' . $device);
+				}
+				else
+				{
+					$audio = trim(preg_replace('/device Multimedia audio controller\s+\[[^\]]+\]/i', '', $info));
+				}
+				$audio = str_replace(array('[', ']', 'Multimedia audio controller'), '', $audio);
+				$audio = pts_strings::trim_spaces(str_replace('  ', ' ', $audio));
+			}
+		}
 		else if(phodevi::is_bsd())
 		{
 			foreach(array('dev.hdac.0.%desc') as $dev)

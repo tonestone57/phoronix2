@@ -264,7 +264,12 @@ class pts_math
 			if($i >= 0 && $i < strlen($value) - 1)
 			{
 				$num = substr($value, 0, $i + 1);
-				$unit = substr($value, $i + 1);
+				$unit = trim(substr($value, $i + 1));
+
+				if($unit == '' || $unit == ')')
+				{
+					$unit = 'B';
+				}
 			}
 		}
 
