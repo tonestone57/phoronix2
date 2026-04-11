@@ -137,6 +137,33 @@ class phodevi_gpu extends phodevi_device_interface
 				}
 			}
 		}
+		else if(phodevi::is_haiku())
+		{
+			$listdev = phodevi_haiku_parser::read_listdev('/Display controller/i');
+			if(is_array($listdev) && isset($listdev[0]))
+			{
+				$lines = explode(PHP_EOL, $listdev[0]);
+				$vendor = '';
+				$device = '';
+				foreach($lines as $line)
+				{
+					$line_t = trim($line);
+					if(strpos($line_t, 'vendor ') === 0 && ($colon = strpos($line_t, ':')) !== false)
+					{
+						$vendor = trim(substr($line_t, 7, $colon - 7));
+					}
+					else if(strpos($line_t, 'device ') === 0 && ($colon = strpos($line_t, ':')) !== false)
+					{
+						$device = trim(substr($line_t, 7, $colon - 7));
+					}
+				}
+
+				if(!empty($vendor) && !empty($device))
+				{
+					$device_id = $vendor . ':' . $device;
+				}
+			}
+		}
 
 		return $device_id;
 	}

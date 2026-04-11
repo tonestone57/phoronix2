@@ -703,6 +703,10 @@ class pts_test_installer
 				{
 					$env_var_check .= 'COMPILER_OPTIONS=`echo "$COMPILER_OPTIONS" | sed -e "s/\-march=/-mcpu=/g"`' . PHP_EOL;
 				}
+				else if(phodevi::is_haiku() && pts_client::executable_in_path('sed'))
+				{
+					$env_var_check .= 'COMPILER_OPTIONS=`echo "$COMPILER_OPTIONS" | sed -e "s/\-lc\b/-lroot/g" -e "s/\-lrt\b/-lroot/g" -e "s/\-lpthread\b/-lroot/g" -e "s/\-lm\b/-lroot/g" -e "s/\-ldl\b/-lroot/g" -e "s/\-lsocket\b/-lnetwork/g" -e "s/\-lnsl\b/-lnetwork/g" -e "s/\-lresolv\b/-lnetwork/g"`' . PHP_EOL;
+				}
 
 				if(is_executable('/boot/system/bin/bash'))
 				{
