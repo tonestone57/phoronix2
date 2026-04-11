@@ -7,7 +7,7 @@
 		</Information>
 		<Package>
 			<GenericName>build-utilities</GenericName>
-			<PossibleNames>gcc, make, binutils</PossibleNames>
+			<PossibleNames>gcc, make, binutils, haiku_devel, devel:libutil, devel:libexecinfo</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>cmake</GenericName>
@@ -59,7 +59,7 @@
 		</Package>
 		<Package>
 			<GenericName>glibc-development</GenericName>
-			<PossibleNames>libroot</PossibleNames>
+			<PossibleNames>haiku_devel</PossibleNames>
 		</Package>
 	</ExternalDependencies>
 </PhoronixTestSuite>
