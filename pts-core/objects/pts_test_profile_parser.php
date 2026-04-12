@@ -382,11 +382,11 @@ class pts_test_profile_parser
 	}
 	public function is_root_required()
 	{
-		return pts_strings::string_bool($this->xg('TestProfile/RequiresRoot', 'FALSE'));
+		return !phodevi::is_haiku() && pts_strings::string_bool($this->xg('TestProfile/RequiresRoot', 'FALSE'));
 	}
 	public function is_root_install_required()
 	{
-		return pts_strings::string_bool($this->xg('TestProfile/RequiresRootInstall', 'FALSE'));
+		return !phodevi::is_haiku() && pts_strings::string_bool($this->xg('TestProfile/RequiresRootInstall', 'FALSE'));
 	}
 	public function is_display_required()
 	{

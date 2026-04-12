@@ -1010,7 +1010,7 @@ class phodevi extends phodevi_base
 	}
 	public static function is_root()
 	{
-		return phodevi::read_property('system', 'username') == 'root' || is_writable('/root');
+		return phodevi::is_haiku() || phodevi::read_property('system', 'username') == 'root' || is_writable('/root');
 	}
 	public static function is_display_server_active()
 	{
@@ -1020,7 +1020,7 @@ class phodevi extends phodevi_base
 			return false;
 		}
 
-		return getenv('DISPLAY') != false || getenv('WAYLAND_DISPLAY') != false || phodevi::is_windows() || phodevi::is_macos() || phodevi::is_haiku();
+		return getenv('DISPLAY') != false || getenv('WAYLAND_DISPLAY') != false || phodevi::is_windows() || phodevi::is_macos() || phodevi::is_haiku() || pts_client::executable_in_path('xvfb-run') || pts_client::executable_in_path('Xvfb');
 	}
 }
 
