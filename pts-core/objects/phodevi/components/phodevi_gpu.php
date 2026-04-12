@@ -21,6 +21,11 @@
 	along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
+if(phodevi::is_haiku())
+{
+	include_once(dirname(__DIR__) . '/parsers/phodevi_haiku_parser.php');
+}
+
 class phodevi_gpu extends phodevi_device_interface
 {
 	public static function properties()
