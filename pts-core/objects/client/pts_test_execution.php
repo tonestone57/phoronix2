@@ -150,6 +150,11 @@ class pts_test_execution
 			$execute_binary_prepend .= ' ' . PTS_CORE_STATIC_PATH . 'root-access.sh ';
 		}
 
+		if(!$cache_share_present && !$test_run_manager->DEBUG_no_test_execution_just_result_parse && $test_run_request->test_profile->is_display_required() && getenv('DISPLAY') == false && getenv('WAYLAND_DISPLAY') == false && !phodevi::is_windows() && !phodevi::is_macos() && ($xvfb_run_bin = pts_client::executable_in_path('xvfb-run')))
+		{
+			$execute_binary_prepend = $xvfb_run_bin . ' --auto-servernum ' . $execute_binary_prepend;
+		}
+
 		if($allow_cache_share && !is_file($cache_share_pt2so))
 		{
 			$cache_share = new pts_storage_object(false, false);
