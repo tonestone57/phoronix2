@@ -698,10 +698,14 @@ class pts_test_installer
 				}
 				*/
 
-				// Since GCC POWER doesn't support -march=, in the compiler mask we can change it to -mcpu= before passed to the actual compiler
-				if(strpos(phodevi::read_property('system', 'kernel-architecture'), 'ppc') !== false && pts_client::executable_in_path('sed'))
+				$haiku_fix = '';
+				if(phodevi::is_haiku() && pts_client::executable_in_path('sed'))
 				{
-					$env_var_check .= 'COMPILER_OPTIONS=`echo "$COMPILER_OPTIONS" | sed -e "s/\-march=/-mcpu=/g"`' . PHP_EOL;
+					$haiku_fix = 'sed -e "s/\-lc\b/-lroot/g" -e "s/\-lrt\b/-lroot/g" -e "s/\-lpthread\b/-lroot/g" -e "s/\-lm\b/-lroot/g" -e "s/\-ldl\b/-lroot/g" -e "s/\-lsocket\b/-lnetwork/g" -e "s/\-lnsl\b/-lnetwork/g" -e "s/\-lresolv\b/-lnetwork/g"';
+					foreach(array('CFLAGS', 'CXXFLAGS', 'LDFLAGS', 'LIBS') as $fix_env_var)
+					{
+						$env_var_check .= 'export ' . $fix_env_var . '="`echo \"$' . $fix_env_var . '\" | ' . $haiku_fix . '`"' . PHP_EOL;
+					}
 				}
 				else if(phodevi::is_haiku() && pts_client::executable_in_path('sed'))
 				{
@@ -734,13 +738,26 @@ class pts_test_installer
 				}
 
 				// Write the main mask for the compiler
-				file_put_contents($main_compiler,
-					'#!' . $shebang . PHP_EOL .
-					'COMPILER_OPTIONS="$@"' . PHP_EOL .
+				$compiler_mask_script = '#!' . $shebang . PHP_EOL .
+					'for arg in "$@"; do' . PHP_EOL;
+
+				if(strpos(phodevi::read_property('system', 'kernel-architecture'), 'ppc') !== false && pts_client::executable_in_path('sed'))
+				{
+					$compiler_mask_script .= '	arg=`printf "%s\n" "$arg" | sed -e "s/\-march=/-mcpu=/g"`' . PHP_EOL;
+				}
+				if(!empty($haiku_fix))
+				{
+					$compiler_mask_script .= '	arg=`printf "%s\n" "$arg" | ' . $haiku_fix . '`' . PHP_EOL;
+				}
+
+				$compiler_mask_script .= '	set -- "$@" "$arg"' . PHP_EOL .
+					'	shift' . PHP_EOL .
+					'done' . PHP_EOL .
 					$env_var_check . PHP_EOL .
-					'echo $COMPILER_OPTIONS >> ' . $mask_dir . $compiler_type . '-options-' . $compiler_name . PHP_EOL .
-					$compiler_path . ' "$@"' . PHP_EOL .
-					PHP_EOL);
+					'printf "%s\n" "$*" >> ' . $mask_dir . $compiler_type . '-options-' . $compiler_name . PHP_EOL .
+					'exec ' . $compiler_path . ' "$@"' . PHP_EOL;
+
+				file_put_contents($main_compiler, $compiler_mask_script);
 
 				// Make executable
 				chmod($main_compiler, 0755);

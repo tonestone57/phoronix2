@@ -21,6 +21,11 @@
 	along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
+if(phodevi::is_haiku())
+{
+	include_once(dirname(__DIR__) . '/parsers/phodevi_haiku_parser.php');
+}
+
 class phodevi_gpu extends phodevi_device_interface
 {
 	public static function properties()
@@ -503,6 +508,15 @@ class phodevi_gpu extends phodevi_device_interface
 						$resolution = $res;
 					}
 				}
+			}
+		}
+		else if(phodevi::is_haiku())
+		{
+			$screenmode = shell_exec('screenmode 2> /dev/null');
+
+			if(!empty($screenmode) && preg_match('/resolution\s+(\d+)\s+x\s+(\d+)/i', $screenmode, $matches))
+			{
+				$resolution = array($matches[1], $matches[2]);
 			}
 		}
 		else if(phodevi::is_windows())
