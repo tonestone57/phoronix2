@@ -735,24 +735,22 @@ class pts_test_installer
 
 				// Write the main mask for the compiler
 				$compiler_mask_script = '#!' . $shebang . PHP_EOL .
-					'NUM_ARGS=$#' . PHP_EOL .
-					'for i in $(seq 1 $NUM_ARGS); do' . PHP_EOL .
-					'	arg="$1"' . PHP_EOL;
+					'for arg in "$@"; do' . PHP_EOL;
 
 				if(strpos(phodevi::read_property('system', 'kernel-architecture'), 'ppc') !== false && pts_client::executable_in_path('sed'))
 				{
-					$compiler_mask_script .= '	arg=`echo "$arg" | sed -e "s/\-march=/-mcpu=/g"`' . PHP_EOL;
+					$compiler_mask_script .= '	arg=`printf "%s\n" "$arg" | sed -e "s/\-march=/-mcpu=/g"`' . PHP_EOL;
 				}
 				if(!empty($haiku_fix))
 				{
-					$compiler_mask_script .= '	arg=`echo "$arg" | ' . $haiku_fix . '`' . PHP_EOL;
+					$compiler_mask_script .= '	arg=`printf "%s\n" "$arg" | ' . $haiku_fix . '`' . PHP_EOL;
 				}
 
 				$compiler_mask_script .= '	set -- "$@" "$arg"' . PHP_EOL .
 					'	shift' . PHP_EOL .
 					'done' . PHP_EOL .
 					$env_var_check . PHP_EOL .
-					'echo "$@" >> ' . $mask_dir . $compiler_type . '-options-' . $compiler_name . PHP_EOL .
+					'printf "%s\n" "$*" >> ' . $mask_dir . $compiler_type . '-options-' . $compiler_name . PHP_EOL .
 					'exec ' . $compiler_path . ' "$@"' . PHP_EOL;
 
 				file_put_contents($main_compiler, $compiler_mask_script);

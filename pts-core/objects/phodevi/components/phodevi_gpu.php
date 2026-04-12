@@ -510,6 +510,15 @@ class phodevi_gpu extends phodevi_device_interface
 				}
 			}
 		}
+		else if(phodevi::is_haiku())
+		{
+			$screenmode = shell_exec('screenmode 2> /dev/null');
+
+			if(!empty($screenmode) && preg_match('/resolution\s+(\d+)\s+x\s+(\d+)/i', $screenmode, $matches))
+			{
+				$resolution = array($matches[1], $matches[2]);
+			}
+		}
 		else if(phodevi::is_windows())
 		{
 			$resolution = array(phodevi_windows_parser::get_wmi_object('Win32_VideoController', 'CurrentHorizontalResolution'), phodevi_windows_parser::get_wmi_object('Win32_VideoController', 'CurrentVerticalResolution'));
