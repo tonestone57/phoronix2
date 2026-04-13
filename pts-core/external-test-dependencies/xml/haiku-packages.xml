@@ -147,5 +147,109 @@
 			<GenericName>expat</GenericName>
 			<PossibleNames>expat_devel</PossibleNames>
 		</Package>
+		<Package>
+			<GenericName>fftw3-development</GenericName>
+			<PossibleNames>fftw_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>firefox</GenericName>
+			<PossibleNames>iceweasel_bin, floorp_bin, librewolf_bin, waterfox_bin</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>fortran-compiler</GenericName>
+			<PossibleNames>gcc_fortran</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>freeimage</GenericName>
+			<PossibleNames>freeimage_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>freetype</GenericName>
+			<PossibleNames>freetype_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>gflags</GenericName>
+			<PossibleNames>gflags_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>gimp</GenericName>
+			<PossibleNames>gimp</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>glew</GenericName>
+			<PossibleNames>glew_devel, glew21_devel, glew1_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>glfw</GenericName>
+			<PossibleNames>glfw_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>gpg</GenericName>
+			<PossibleNames>gnupg</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>gtk-development</GenericName>
+			<PossibleNames>gtk3_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>hdf5</GenericName>
+			<PossibleNames>hdf5_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>httpd</GenericName>
+			<PossibleNames>apache</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>imlib2-development</GenericName>
+			<PossibleNames>imlib2_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>iozone</GenericName>
+			<PossibleNames>iozone</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>jam</GenericName>
+			<PossibleNames>jam</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>java</GenericName>
+			<PossibleNames>openjdk17_default, openjdk21_default, openjdk11_default, openjdk8_default</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>lapack-development</GenericName>
+			<PossibleNames>lapack_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>lib3ds</GenericName>
+			<PossibleNames>lib3ds_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>libevent</GenericName>
+			<PossibleNames>libevent_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>libxml2</GenericName>
+			<PossibleNames>libxml2_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>meson</GenericName>
+			<PossibleNames>meson</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>nasm</GenericName>
+			<PossibleNames>nasm</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>openal-development</GenericName>
+			<PossibleNames>openal_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>opencl</GenericName>
+			<PossibleNames>ocl_icd_devel, opencl_headers</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>opencv</GenericName>
+			<PossibleNames>opencv_devel, opencv4.13_devel</PossibleNames>
+		</Package>
 	</ExternalDependencies>
 </PhoronixTestSuite>
