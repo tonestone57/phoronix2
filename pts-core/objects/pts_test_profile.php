@@ -409,6 +409,15 @@ class pts_test_profile extends pts_test_profile_parser
 			{
 				// For now until test profiles explicity express Haiku support, just list as supported the tests that work on BSD or Linux
 				$supported = true;
+
+				foreach($this->get_external_dependencies() as $dependency)
+				{
+					if($dependency == 'libaio-development' || $dependency == 'golang' || $dependency == 'numa-development')
+					{
+						$supported = false;
+						break;
+					}
+				}
 			}
 			else
 			{
