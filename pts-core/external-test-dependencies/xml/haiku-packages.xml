@@ -335,5 +335,45 @@
 			<GenericName>tesseract</GenericName>
 			<PossibleNames>tesseract_devel, tesseract_data</PossibleNames>
 		</Package>
+		<Package>
+			<GenericName>tiff</GenericName>
+			<PossibleNames>tiff_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>tinyxml</GenericName>
+			<PossibleNames>tinyxml_devel, tinyxml2_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>uuid</GenericName>
+			<PossibleNames>libuuid_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>vorbis-development</GenericName>
+			<PossibleNames>libvorbis_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>vulkan-development</GenericName>
+			<PossibleNames>vulkan_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>wine</GenericName>
+			<PossibleNames>wine_bin</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>xorg-development</GenericName>
+			<PossibleNames>xorgproto, libxcb_devel, xlibe_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>yasm</GenericName>
+			<PossibleNames>yasm</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>Rscript</GenericName>
+			<PossibleNames>r</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>qt6-development</GenericName>
+			<PossibleNames>qt6_declarative_devel</PossibleNames>
+		</Package>
 	</ExternalDependencies>
 </PhoronixTestSuite>
