@@ -706,6 +706,9 @@ class pts_test_installer
 					{
 						$env_var_check .= 'export ' . $fix_env_var . '="`echo \"$' . $fix_env_var . '\" | ' . $haiku_fix . '`"' . PHP_EOL;
 					}
+
+					$env_var_check .= 'export CFLAGS="$CFLAGS -D__unix__"' . PHP_EOL;
+					$env_var_check .= 'export CXXFLAGS="$CXXFLAGS -D__unix__"' . PHP_EOL;
 				}
 				else if(phodevi::is_haiku() && pts_client::executable_in_path('sed'))
 				{
