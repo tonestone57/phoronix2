@@ -251,5 +251,89 @@
 			<GenericName>opencv</GenericName>
 			<PossibleNames>opencv_devel, opencv4.13_devel</PossibleNames>
 		</Package>
+		<Package>
+			<GenericName>openexr</GenericName>
+			<PossibleNames>openexr_devel, openexr3.2_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>pcre</GenericName>
+			<PossibleNames>libpcre2_devel, libpcre_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>perl-digest-md5</GenericName>
+			<PossibleNames>libmd_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>popt</GenericName>
+			<PossibleNames>popt_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>portaudio-development</GenericName>
+			<PossibleNames>portaudio_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>protobuf</GenericName>
+			<PossibleNames>protobuf_devel, protobuf_c_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>python-numpy</GenericName>
+			<PossibleNames>numpy_python310</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>python-scipy</GenericName>
+			<PossibleNames>scipy_python310</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>qt5-development</GenericName>
+			<PossibleNames>qt5_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>redis</GenericName>
+			<PossibleNames>redis</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>ruby</GenericName>
+			<PossibleNames>ruby_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>rust</GenericName>
+			<PossibleNames>rust_bin</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>scons</GenericName>
+			<PossibleNames>scons</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>sdl-development</GenericName>
+			<PossibleNames>libsdl_devel, sdl_image_devel, sdl_mixer_devel, sdl_net_devel, sdl_ttf_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>snappy</GenericName>
+			<PossibleNames>snappy_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>subversion</GenericName>
+			<PossibleNames>subversion_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>suitesparse</GenericName>
+			<PossibleNames>suitesparse_devel, suitesparse5_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>superlu</GenericName>
+			<PossibleNames>superlu_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>swig</GenericName>
+			<PossibleNames>swig</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>tcl</GenericName>
+			<PossibleNames>tcl_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>tesseract</GenericName>
+			<PossibleNames>tesseract_devel, tesseract_data</PossibleNames>
+		</Package>
 	</ExternalDependencies>
 </PhoronixTestSuite>
