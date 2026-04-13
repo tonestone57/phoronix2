@@ -11,7 +11,7 @@
 		</Package>
 		<Package>
 			<GenericName>cmake</GenericName>
-			<PackageName>cmake cmake3</PackageName>
+			<PackageName>cmake</PackageName>
 		</Package>
 		<Package>
 			<GenericName>git</GenericName>
