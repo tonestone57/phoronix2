@@ -764,7 +764,9 @@ class pts_test_installer
 					$compiler_mask_script .= '	arg=`printf -- "%s\n" "$arg" | ' . $haiku_fix . '`' . PHP_EOL;
 				}
 
-				$compiler_mask_script .= '	set -- "$@" "$arg"' . PHP_EOL .
+				$compiler_mask_script .= '	if [ -n "$arg" ]; then' . PHP_EOL .
+					'		set -- "$@" "$arg"' . PHP_EOL .
+					'	fi' . PHP_EOL .
 					'	shift' . PHP_EOL .
 					'done' . PHP_EOL;
 
