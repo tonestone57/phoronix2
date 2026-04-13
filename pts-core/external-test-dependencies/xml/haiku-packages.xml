@@ -103,5 +103,49 @@
 			<GenericName>libpng-development</GenericName>
 			<PossibleNames>libpng16_devel</PossibleNames>
 		</Package>
+		<Package>
+			<GenericName>atlas-development</GenericName>
+			<PossibleNames>lapack_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>attr</GenericName>
+			<PossibleNames>attr_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>blas-development</GenericName>
+			<PossibleNames>openblas_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>boost-development</GenericName>
+			<PossibleNames>boost_devel, boost1.90_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>boost-thread-development</GenericName>
+			<PossibleNames>boost_devel, boost1.90_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>bzip2-development</GenericName>
+			<PossibleNames>bzip2_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>cairo-development</GenericName>
+			<PossibleNames>cairo_devel</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>clang</GenericName>
+			<PossibleNames>llvm_clang, llvm22_clang</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>eigen</GenericName>
+			<PossibleNames>eigen3</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>erlang</GenericName>
+			<PossibleNames>erlang</PossibleNames>
+		</Package>
+		<Package>
+			<GenericName>expat</GenericName>
+			<PossibleNames>expat_devel</PossibleNames>
+		</Package>
 	</ExternalDependencies>
 </PhoronixTestSuite>
