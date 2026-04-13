@@ -741,8 +741,19 @@ class pts_test_installer
 				}
 
 				// Write the main mask for the compiler
-				$compiler_mask_script = '#!' . $shebang . PHP_EOL .
-					'for arg in "$@"; do' . PHP_EOL;
+				$compiler_mask_script = '#!' . $shebang . PHP_EOL;
+
+				if(phodevi::is_haiku())
+				{
+					$compiler_mask_script .= 'LINK_FLAG=1' . PHP_EOL;
+				}
+
+				$compiler_mask_script .= 'for arg in "$@"; do' . PHP_EOL;
+
+				if(phodevi::is_haiku())
+				{
+					$compiler_mask_script .= '	if [ "$arg" = "-c" ] || [ "$arg" = "-S" ] || [ "$arg" = "-E" ]; then LINK_FLAG=0; fi' . PHP_EOL;
+				}
 
 				if(strpos(phodevi::read_property('system', 'kernel-architecture'), 'ppc') !== false && pts_client::executable_in_path('sed'))
 				{
@@ -755,8 +766,14 @@ class pts_test_installer
 
 				$compiler_mask_script .= '	set -- "$@" "$arg"' . PHP_EOL .
 					'	shift' . PHP_EOL .
-					'done' . PHP_EOL .
-					$env_var_check . PHP_EOL .
+					'done' . PHP_EOL;
+
+				if(phodevi::is_haiku())
+				{
+					$compiler_mask_script .= 'if [ $LINK_FLAG -eq 1 ]; then set -- "$@" "-lnetwork"; fi' . PHP_EOL;
+				}
+
+				$compiler_mask_script .= $env_var_check . PHP_EOL .
 					'printf "%s\n" "$*" >> ' . $mask_dir . $compiler_type . '-options-' . $compiler_name . PHP_EOL .
 					'exec ' . $compiler_path . ' "$@"' . PHP_EOL;
 
