@@ -139,8 +139,8 @@
 		</Package>
 		<Package>
 			<GenericName>attr</GenericName>
-			<PackageName>attr_devel</PackageName>
-			<PossibleNames>attr_devel</PossibleNames>
+			<PackageName>attr attr_devel</PackageName>
+			<PossibleNames>attr, attr_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>blas-development</GenericName>
