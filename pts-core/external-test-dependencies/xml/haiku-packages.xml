@@ -8,105 +8,129 @@
 		<Package>
 			<GenericName>build-utilities</GenericName>
 			<PackageName>binutils devel:libexecinfo devel:libutil gcc haiku_devel make</PackageName>
+			<PossibleNames>binutils, devel:libexecinfo, devel:libutil, gcc, haiku_devel, make</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>cmake</GenericName>
 			<PackageName>cmake</PackageName>
+			<PossibleNames>cmake</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>git</GenericName>
 			<PackageName>git</PackageName>
+			<PossibleNames>git</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>python</GenericName>
-			<PackageName>python3.10 python3.11 python3.12 python3.13 python3.14</PackageName>
+			<PackageName>python3.14</PackageName>
+			<PossibleNames>python3.14</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>zlib-development</GenericName>
 			<PackageName>zlib_devel</PackageName>
+			<PossibleNames>zlib_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>openssl-development</GenericName>
-			<PackageName>openssl3_devel openssl_devel</PackageName>
+			<PackageName>openssl3_devel</PackageName>
+			<PossibleNames>openssl3_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>sdl2-development</GenericName>
 			<PackageName>libsdl2_devel</PackageName>
+			<PossibleNames>libsdl2_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>sqlite</GenericName>
 			<PackageName>sqlite sqlite_devel</PackageName>
+			<PossibleNames>sqlite, sqlite_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>p7zip</GenericName>
 			<PackageName>p7zip</PackageName>
+			<PossibleNames>p7zip</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>bc</GenericName>
 			<PackageName>bc</PackageName>
+			<PossibleNames>bc</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>bison</GenericName>
 			<PackageName>bison</PackageName>
+			<PossibleNames>bison</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>flex</GenericName>
 			<PackageName>flex</PackageName>
+			<PossibleNames>flex</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>node-npm</GenericName>
 			<PackageName>nodejs20 nodejs20_devel npm</PackageName>
+			<PossibleNames>nodejs20, nodejs20_devel, npm</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>glibc-development</GenericName>
 			<PackageName>haiku_devel</PackageName>
+			<PossibleNames>haiku_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>perl</GenericName>
 			<PackageName>perl sdl_perl</PackageName>
+			<PossibleNames>perl, sdl_perl</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>autoconf</GenericName>
 			<PackageName>autoconf</PackageName>
+			<PossibleNames>autoconf</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>libtool</GenericName>
 			<Title>Libtool</Title>
 			<PackageName>libtool</PackageName>
+			<PossibleNames>libtool</PossibleNames>
 			<FileCheck>libtool OR libtoolize</FileCheck>
 		</Package>
 		<Package>
 			<GenericName>pkgconfig</GenericName>
 			<PackageName>pkgconfig</PackageName>
+			<PossibleNames>pkgconfig</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>m4</GenericName>
 			<PackageName>m4</PackageName>
+			<PossibleNames>m4</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>patch</GenericName>
 			<PackageName>patch</PackageName>
+			<PossibleNames>patch</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>curl</GenericName>
 			<PackageName>curl curl_devel</PackageName>
+			<PossibleNames>curl, curl_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>ncurses-development</GenericName>
-			<PackageName>ncurses6_devel ncurses_devel</PackageName>
+			<PackageName>ncurses6_devel</PackageName>
+			<PossibleNames>ncurses6_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>jpeg-development</GenericName>
 			<PackageName>libjpeg_turbo_devel</PackageName>
+			<PossibleNames>libjpeg_turbo_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>common-dependencies</GenericName>
 			<PackageName>bash bzip2 tar unzip xz_utils</PackageName>
-			<PossibleNames>bash, bzip2, unzip</PossibleNames>
+			<PossibleNames>bash, bzip2, tar, unzip, xz_utils</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>libpng-development</GenericName>
 			<PackageName>libpng16_devel</PackageName>
+			<PossibleNames>libpng16_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>atlas-development</GenericName>
@@ -125,13 +149,13 @@
 		</Package>
 		<Package>
 			<GenericName>boost-development</GenericName>
-			<PackageName>boost1.90_devel boost_devel</PackageName>
-			<PossibleNames>boost1.90_devel, boost_devel</PossibleNames>
+			<PackageName>boost1.90_devel</PackageName>
+			<PossibleNames>boost1.90_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>boost-thread-development</GenericName>
-			<PackageName>boost1.90_devel boost_devel</PackageName>
-			<PossibleNames>boost1.90_devel, boost_devel</PossibleNames>
+			<PackageName>boost1.90_devel</PackageName>
+			<PossibleNames>boost1.90_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>bzip2-development</GenericName>
@@ -145,8 +169,8 @@
 		</Package>
 		<Package>
 			<GenericName>clang</GenericName>
-			<PackageName>llvm22_clang llvm_clang</PackageName>
-			<PossibleNames>llvm22_clang, llvm_clang</PossibleNames>
+			<PackageName>llvm22_clang</PackageName>
+			<PossibleNames>llvm22_clang</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>eigen</GenericName>
@@ -200,8 +224,8 @@
 		</Package>
 		<Package>
 			<GenericName>glew</GenericName>
-			<PackageName>glew1_devel glew21_devel glew_devel</PackageName>
-			<PossibleNames>glew1_devel, glew21_devel, glew_devel</PossibleNames>
+			<PackageName>glew21_devel</PackageName>
+			<PossibleNames>glew21_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>glfw</GenericName>
@@ -250,8 +274,8 @@
 		</Package>
 		<Package>
 			<GenericName>java</GenericName>
-			<PackageName>openjdk11_default openjdk17_default openjdk21_default openjdk8_default</PackageName>
-			<PossibleNames>openjdk11_default, openjdk17_default, openjdk21_default, openjdk8_default</PossibleNames>
+			<PackageName>openjdk21_default</PackageName>
+			<PossibleNames>openjdk21_default</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>lapack-development</GenericName>
@@ -295,18 +319,18 @@
 		</Package>
 		<Package>
 			<GenericName>opencv</GenericName>
-			<PackageName>opencv4.13_devel opencv_devel</PackageName>
-			<PossibleNames>opencv4.13_devel, opencv_devel</PossibleNames>
+			<PackageName>opencv4.13_devel</PackageName>
+			<PossibleNames>opencv4.13_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>openexr</GenericName>
-			<PackageName>openexr3.2_devel openexr_devel</PackageName>
-			<PossibleNames>openexr3.2_devel, openexr_devel</PossibleNames>
+			<PackageName>openexr3.2_devel</PackageName>
+			<PossibleNames>openexr3.2_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>pcre</GenericName>
-			<PackageName>libpcre2_devel libpcre_devel</PackageName>
-			<PossibleNames>libpcre2_devel, libpcre_devel</PossibleNames>
+			<PackageName>libpcre2_devel</PackageName>
+			<PossibleNames>libpcre2_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>perl-digest-md5</GenericName>
@@ -351,12 +375,12 @@
 		<Package>
 			<GenericName>ruby</GenericName>
 			<PackageName>ruby ruby_devel</PackageName>
-			<PossibleNames>ruby_devel</PossibleNames>
+			<PossibleNames>ruby, ruby_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>rust</GenericName>
 			<PackageName>cargo_c rust_bin</PackageName>
-			<PossibleNames>rust_bin</PossibleNames>
+			<PossibleNames>cargo_c, rust_bin</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>scons</GenericName>
@@ -380,8 +404,8 @@
 		</Package>
 		<Package>
 			<GenericName>suitesparse</GenericName>
-			<PackageName>suitesparse5_devel suitesparse_devel</PackageName>
-			<PossibleNames>suitesparse5_devel, suitesparse_devel</PossibleNames>
+			<PackageName>suitesparse5_devel</PackageName>
+			<PossibleNames>suitesparse5_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>superlu</GenericName>
@@ -415,8 +439,8 @@
 		</Package>
 		<Package>
 			<GenericName>tinyxml</GenericName>
-			<PackageName>tinyxml2_devel tinyxml_devel</PackageName>
-			<PossibleNames>tinyxml2_devel, tinyxml_devel</PossibleNames>
+			<PackageName>tinyxml2_devel</PackageName>
+			<PossibleNames>tinyxml2_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>uuid</GenericName>
