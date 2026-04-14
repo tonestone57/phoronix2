@@ -707,8 +707,8 @@ class pts_test_installer
 						$env_var_check .= 'export ' . $fix_env_var . '="`echo \"$' . $fix_env_var . '\" | ' . $haiku_fix . '`"' . PHP_EOL;
 					}
 
-					$env_var_check .= 'export CFLAGS="$CFLAGS -D__unix__"' . PHP_EOL;
-					$env_var_check .= 'export CXXFLAGS="$CXXFLAGS -D__unix__"' . PHP_EOL;
+					$env_var_check .= 'export CFLAGS="$CFLAGS -D__unix__ -Dgetwd(x)=getcwd(x,4096)"' . PHP_EOL;
+					$env_var_check .= 'export CXXFLAGS="$CXXFLAGS -D__unix__ -Dgetwd(x)=getcwd(x,4096)"' . PHP_EOL;
 				}
 				else if(phodevi::is_haiku() && pts_client::executable_in_path('sed'))
 				{
@@ -757,14 +757,16 @@ class pts_test_installer
 
 				if(strpos(phodevi::read_property('system', 'kernel-architecture'), 'ppc') !== false && pts_client::executable_in_path('sed'))
 				{
-					$compiler_mask_script .= '	arg=`printf "%s\n" "$arg" | sed -e "s/\-march=/-mcpu=/g"`' . PHP_EOL;
+					$compiler_mask_script .= '	arg=`printf -- "%s\n" "$arg" | sed -e "s/\-march=/-mcpu=/g"`' . PHP_EOL;
 				}
 				if(!empty($haiku_fix))
 				{
-					$compiler_mask_script .= '	arg=`printf "%s\n" "$arg" | ' . $haiku_fix . '`' . PHP_EOL;
+					$compiler_mask_script .= '	arg=`printf -- "%s\n" "$arg" | ' . $haiku_fix . '`' . PHP_EOL;
 				}
 
-				$compiler_mask_script .= '	set -- "$@" "$arg"' . PHP_EOL .
+				$compiler_mask_script .= '	if [ -n "$arg" ]; then' . PHP_EOL .
+					'		set -- "$@" "$arg"' . PHP_EOL .
+					'	fi' . PHP_EOL .
 					'	shift' . PHP_EOL .
 					'done' . PHP_EOL;
 
@@ -774,7 +776,7 @@ class pts_test_installer
 				}
 
 				$compiler_mask_script .= $env_var_check . PHP_EOL .
-					'printf "%s\n" "$*" >> ' . $mask_dir . $compiler_type . '-options-' . $compiler_name . PHP_EOL .
+					'printf -- "%s\n" "$*" >> ' . $mask_dir . $compiler_type . '-options-' . $compiler_name . PHP_EOL .
 					'exec ' . $compiler_path . ' "$@"' . PHP_EOL;
 
 				file_put_contents($main_compiler, $compiler_mask_script);

@@ -7,7 +7,7 @@
 		</Information>
 		<Package>
 			<GenericName>build-utilities</GenericName>
-			<PackageName>gcc make binutils haiku_devel devel:libutil devel:libexecinfo</PackageName>
+			<PackageName>binutils devel:libexecinfo devel:libutil gcc haiku_devel make</PackageName>
 		</Package>
 		<Package>
 			<GenericName>cmake</GenericName>
@@ -19,7 +19,7 @@
 		</Package>
 		<Package>
 			<GenericName>python</GenericName>
-			<PackageName>python3.14 python3.13 python3.12 python3.11 python3.10</PackageName>
+			<PackageName>python3.10 python3.11 python3.12 python3.13 python3.14</PackageName>
 		</Package>
 		<Package>
 			<GenericName>zlib-development</GenericName>
@@ -55,7 +55,7 @@
 		</Package>
 		<Package>
 			<GenericName>node-npm</GenericName>
-			<PackageName>nodejs20_devel nodejs20 npm</PackageName>
+			<PackageName>nodejs20 nodejs20_devel npm</PackageName>
 		</Package>
 		<Package>
 			<GenericName>glibc-development</GenericName>
@@ -93,7 +93,7 @@
 		</Package>
 		<Package>
 			<GenericName>ncurses-development</GenericName>
-			<PackageName>ncurses_devel ncurses6_devel</PackageName>
+			<PackageName>ncurses6_devel ncurses_devel</PackageName>
 		</Package>
 		<Package>
 			<GenericName>jpeg-development</GenericName>
@@ -101,11 +101,8 @@
 		</Package>
 		<Package>
 			<GenericName>common-dependencies</GenericName>
-			<PackageName>unzip bzip2 bash xz_utils tar</PackageName>
-		</Package>
-		<Package>
-			<GenericName>common-dependencies</GenericName>
-			<PossibleNames>unzip, bzip2, bash</PossibleNames>
+			<PackageName>bash bzip2 tar unzip xz_utils</PackageName>
+			<PossibleNames>bash, bzip2, unzip</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>libpng-development</GenericName>
@@ -114,561 +111,351 @@
 		<Package>
 			<GenericName>atlas-development</GenericName>
 			<PackageName>lapack_devel</PackageName>
+			<PossibleNames>lapack_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>attr</GenericName>
 			<PackageName>attr_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>blas-development</GenericName>
-			<PackageName>openblas_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>boost-development</GenericName>
-			<PackageName>boost_devel boost1.90_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>boost-thread-development</GenericName>
-			<PackageName>boost_devel boost1.90_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>bzip2-development</GenericName>
-			<PackageName>bzip2_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>cairo-development</GenericName>
-			<PackageName>cairo_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>clang</GenericName>
-			<PackageName>llvm_clang llvm22_clang</PackageName>
-		</Package>
-		<Package>
-			<GenericName>eigen</GenericName>
-			<PackageName>eigen3</PackageName>
-		</Package>
-		<Package>
-			<GenericName>erlang</GenericName>
-			<PackageName>erlang</PackageName>
-		</Package>
-		<Package>
-			<GenericName>expat</GenericName>
-			<PackageName>expat_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>fftw3-development</GenericName>
-			<PackageName>fftw_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>firefox</GenericName>
-			<PackageName>iceweasel_bin floorp_bin librewolf_bin waterfox_bin</PackageName>
-		</Package>
-		<Package>
-			<GenericName>fortran-compiler</GenericName>
-			<PackageName>gcc_fortran</PackageName>
-		</Package>
-		<Package>
-			<GenericName>freeimage</GenericName>
-			<PackageName>freeimage_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>freetype</GenericName>
-			<PackageName>freetype_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>gflags</GenericName>
-			<PackageName>gflags_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>gimp</GenericName>
-			<PackageName>gimp</PackageName>
-		</Package>
-		<Package>
-			<GenericName>glew</GenericName>
-			<PackageName>glew_devel glew21_devel glew1_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>glfw</GenericName>
-			<PackageName>glfw_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>gmp-library</GenericName>
-			<PackageName>gmp_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>gpg</GenericName>
-			<PackageName>gnupg</PackageName>
-		</Package>
-		<Package>
-			<GenericName>gtk-development</GenericName>
-			<PackageName>gtk3_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>hdf5</GenericName>
-			<PackageName>hdf5_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>httpd</GenericName>
-			<PackageName>apache</PackageName>
-		</Package>
-		<Package>
-			<GenericName>imlib2-development</GenericName>
-			<PackageName>imlib2_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>iozone</GenericName>
-			<PackageName>iozone</PackageName>
-		</Package>
-		<Package>
-			<GenericName>jam</GenericName>
-			<PackageName>jam</PackageName>
-		</Package>
-		<Package>
-			<GenericName>java</GenericName>
-			<PackageName>openjdk17_default openjdk21_default openjdk11_default openjdk8_default</PackageName>
-		</Package>
-		<Package>
-			<GenericName>lapack-development</GenericName>
-			<PackageName>lapack_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>lib3ds</GenericName>
-			<PackageName>lib3ds_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>libevent</GenericName>
-			<PackageName>libevent_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>libxml2</GenericName>
-			<PackageName>libxml2_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>meson</GenericName>
-			<PackageName>meson</PackageName>
-		</Package>
-		<Package>
-			<GenericName>nasm</GenericName>
-			<PackageName>nasm</PackageName>
-		</Package>
-		<Package>
-			<GenericName>openal-development</GenericName>
-			<PackageName>openal_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>opencl</GenericName>
-			<PackageName>ocl_icd_devel opencl_headers</PackageName>
-		</Package>
-		<Package>
-			<GenericName>opencv</GenericName>
-			<PackageName>opencv_devel opencv4.13_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>openexr</GenericName>
-			<PackageName>openexr_devel openexr3.2_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>pcre</GenericName>
-			<PackageName>libpcre2_devel libpcre_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>perl-digest-md5</GenericName>
-			<PackageName>libmd_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>popt</GenericName>
-			<PackageName>popt_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>portaudio-development</GenericName>
-			<PackageName>portaudio_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>protobuf</GenericName>
-			<PackageName>protobuf_devel protobuf_c_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>python-numpy</GenericName>
-			<PackageName>numpy_python310</PackageName>
-		</Package>
-		<Package>
-			<GenericName>python-scipy</GenericName>
-			<PackageName>scipy_python310</PackageName>
-		</Package>
-		<Package>
-			<GenericName>qt5-development</GenericName>
-			<PackageName>qt5_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>redis</GenericName>
-			<PackageName>redis</PackageName>
-		</Package>
-		<Package>
-			<GenericName>ruby</GenericName>
-			<PackageName>ruby_devel ruby</PackageName>
-		</Package>
-		<Package>
-			<GenericName>rust</GenericName>
-			<PackageName>rust_bin cargo_c</PackageName>
-		</Package>
-		<Package>
-			<GenericName>scons</GenericName>
-			<PackageName>scons</PackageName>
-		</Package>
-		<Package>
-			<GenericName>sdl-development</GenericName>
-			<PackageName>libsdl_devel sdl_image_devel sdl_mixer_devel sdl_net_devel sdl_ttf_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>snappy</GenericName>
-			<PackageName>snappy_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>subversion</GenericName>
-			<PackageName>subversion_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>suitesparse</GenericName>
-			<PackageName>suitesparse_devel suitesparse5_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>superlu</GenericName>
-			<PackageName>superlu_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>swig</GenericName>
-			<PackageName>swig</PackageName>
-		</Package>
-		<Package>
-			<GenericName>tcl</GenericName>
-			<PackageName>tcl_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>tesseract</GenericName>
-			<PackageName>tesseract_devel tesseract_data</PackageName>
-		</Package>
-		<Package>
-			<GenericName>xorg-video</GenericName>
-			<PackageName>libxcb_devel xorgproto</PackageName>
-		</Package>
-		<Package>
-			<GenericName>tiff</GenericName>
-			<PackageName>tiff_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>tinyxml</GenericName>
-			<PackageName>tinyxml_devel tinyxml2_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>uuid</GenericName>
-			<PackageName>libuuid_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>vorbis-development</GenericName>
-			<PackageName>libvorbis_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>vulkan-development</GenericName>
-			<PackageName>vulkan_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>wine</GenericName>
-			<PackageName>wine_bin</PackageName>
-		</Package>
-		<Package>
-			<GenericName>xorg-development</GenericName>
-			<PackageName>xorgproto libxcb_devel xlibe_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>yasm</GenericName>
-			<PackageName>yasm</PackageName>
-		</Package>
-		<Package>
-			<GenericName>Rscript</GenericName>
-			<PackageName>r</PackageName>
-		</Package>
-		<Package>
-			<GenericName>qt6-development</GenericName>
-			<PackageName>qt6_declarative_devel</PackageName>
-		</Package>
-		<Package>
-			<GenericName>atlas-development</GenericName>
-			<PossibleNames>lapack_devel</PossibleNames>
-		</Package>
-		<Package>
-			<GenericName>attr</GenericName>
 			<PossibleNames>attr_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>blas-development</GenericName>
+			<PackageName>openblas_devel</PackageName>
 			<PossibleNames>openblas_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>boost-development</GenericName>
-			<PossibleNames>boost_devel, boost1.90_devel</PossibleNames>
+			<PackageName>boost1.90_devel boost_devel</PackageName>
+			<PossibleNames>boost1.90_devel, boost_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>boost-thread-development</GenericName>
-			<PossibleNames>boost_devel, boost1.90_devel</PossibleNames>
+			<PackageName>boost1.90_devel boost_devel</PackageName>
+			<PossibleNames>boost1.90_devel, boost_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>bzip2-development</GenericName>
+			<PackageName>bzip2_devel</PackageName>
 			<PossibleNames>bzip2_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>cairo-development</GenericName>
+			<PackageName>cairo_devel</PackageName>
 			<PossibleNames>cairo_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>clang</GenericName>
-			<PossibleNames>llvm_clang, llvm22_clang</PossibleNames>
+			<PackageName>llvm22_clang llvm_clang</PackageName>
+			<PossibleNames>llvm22_clang, llvm_clang</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>eigen</GenericName>
+			<PackageName>eigen3</PackageName>
 			<PossibleNames>eigen3</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>erlang</GenericName>
+			<PackageName>erlang</PackageName>
 			<PossibleNames>erlang</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>expat</GenericName>
+			<PackageName>expat_devel</PackageName>
 			<PossibleNames>expat_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>fftw3-development</GenericName>
+			<PackageName>fftw_devel</PackageName>
 			<PossibleNames>fftw_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>firefox</GenericName>
-			<PossibleNames>iceweasel_bin, floorp_bin, librewolf_bin, waterfox_bin</PossibleNames>
+			<PackageName>floorp_bin iceweasel_bin librewolf_bin waterfox_bin</PackageName>
+			<PossibleNames>floorp_bin, iceweasel_bin, librewolf_bin, waterfox_bin</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>fortran-compiler</GenericName>
+			<PackageName>gcc_fortran</PackageName>
 			<PossibleNames>gcc_fortran</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>freeimage</GenericName>
+			<PackageName>freeimage_devel</PackageName>
 			<PossibleNames>freeimage_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>freetype</GenericName>
+			<PackageName>freetype_devel</PackageName>
 			<PossibleNames>freetype_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>gflags</GenericName>
+			<PackageName>gflags_devel</PackageName>
 			<PossibleNames>gflags_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>gimp</GenericName>
+			<PackageName>gimp</PackageName>
 			<PossibleNames>gimp</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>glew</GenericName>
-			<PossibleNames>glew_devel, glew21_devel, glew1_devel</PossibleNames>
+			<PackageName>glew1_devel glew21_devel glew_devel</PackageName>
+			<PossibleNames>glew1_devel, glew21_devel, glew_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>glfw</GenericName>
+			<PackageName>glfw_devel</PackageName>
 			<PossibleNames>glfw_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>gmp-library</GenericName>
+			<PackageName>gmp_devel</PackageName>
 			<PossibleNames>gmp_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>gpg</GenericName>
+			<PackageName>gnupg</PackageName>
 			<PossibleNames>gnupg</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>gtk-development</GenericName>
+			<PackageName>gtk3_devel</PackageName>
 			<PossibleNames>gtk3_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>hdf5</GenericName>
+			<PackageName>hdf5_devel</PackageName>
 			<PossibleNames>hdf5_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>httpd</GenericName>
+			<PackageName>apache</PackageName>
 			<PossibleNames>apache</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>imlib2-development</GenericName>
+			<PackageName>imlib2_devel</PackageName>
 			<PossibleNames>imlib2_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>iozone</GenericName>
+			<PackageName>iozone</PackageName>
 			<PossibleNames>iozone</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>jam</GenericName>
+			<PackageName>jam</PackageName>
 			<PossibleNames>jam</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>java</GenericName>
-			<PossibleNames>openjdk17_default, openjdk21_default, openjdk11_default, openjdk8_default</PossibleNames>
+			<PackageName>openjdk11_default openjdk17_default openjdk21_default openjdk8_default</PackageName>
+			<PossibleNames>openjdk11_default, openjdk17_default, openjdk21_default, openjdk8_default</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>lapack-development</GenericName>
+			<PackageName>lapack_devel</PackageName>
 			<PossibleNames>lapack_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>lib3ds</GenericName>
+			<PackageName>lib3ds_devel</PackageName>
 			<PossibleNames>lib3ds_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>libevent</GenericName>
+			<PackageName>libevent_devel</PackageName>
 			<PossibleNames>libevent_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>libxml2</GenericName>
+			<PackageName>libxml2_devel</PackageName>
 			<PossibleNames>libxml2_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>meson</GenericName>
+			<PackageName>meson</PackageName>
 			<PossibleNames>meson</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>nasm</GenericName>
+			<PackageName>nasm</PackageName>
 			<PossibleNames>nasm</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>openal-development</GenericName>
+			<PackageName>openal_devel</PackageName>
 			<PossibleNames>openal_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>opencl</GenericName>
+			<PackageName>ocl_icd_devel opencl_headers</PackageName>
 			<PossibleNames>ocl_icd_devel, opencl_headers</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>opencv</GenericName>
-			<PossibleNames>opencv_devel, opencv4.13_devel</PossibleNames>
+			<PackageName>opencv4.13_devel opencv_devel</PackageName>
+			<PossibleNames>opencv4.13_devel, opencv_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>openexr</GenericName>
-			<PossibleNames>openexr_devel, openexr3.2_devel</PossibleNames>
+			<PackageName>openexr3.2_devel openexr_devel</PackageName>
+			<PossibleNames>openexr3.2_devel, openexr_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>pcre</GenericName>
+			<PackageName>libpcre2_devel libpcre_devel</PackageName>
 			<PossibleNames>libpcre2_devel, libpcre_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>perl-digest-md5</GenericName>
+			<PackageName>libmd_devel</PackageName>
 			<PossibleNames>libmd_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>popt</GenericName>
+			<PackageName>popt_devel</PackageName>
 			<PossibleNames>popt_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>portaudio-development</GenericName>
+			<PackageName>portaudio_devel</PackageName>
 			<PossibleNames>portaudio_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>protobuf</GenericName>
-			<PossibleNames>protobuf_devel, protobuf_c_devel</PossibleNames>
+			<PackageName>protobuf_c_devel protobuf_devel</PackageName>
+			<PossibleNames>protobuf_c_devel, protobuf_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>python-numpy</GenericName>
+			<PackageName>numpy_python310</PackageName>
 			<PossibleNames>numpy_python310</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>python-scipy</GenericName>
+			<PackageName>scipy_python310</PackageName>
 			<PossibleNames>scipy_python310</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>qt5-development</GenericName>
+			<PackageName>qt5_devel</PackageName>
 			<PossibleNames>qt5_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>redis</GenericName>
+			<PackageName>redis</PackageName>
 			<PossibleNames>redis</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>ruby</GenericName>
+			<PackageName>ruby ruby_devel</PackageName>
 			<PossibleNames>ruby_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>rust</GenericName>
+			<PackageName>cargo_c rust_bin</PackageName>
 			<PossibleNames>rust_bin</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>scons</GenericName>
+			<PackageName>scons</PackageName>
 			<PossibleNames>scons</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>sdl-development</GenericName>
+			<PackageName>libsdl_devel sdl_image_devel sdl_mixer_devel sdl_net_devel sdl_ttf_devel</PackageName>
 			<PossibleNames>libsdl_devel, sdl_image_devel, sdl_mixer_devel, sdl_net_devel, sdl_ttf_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>snappy</GenericName>
+			<PackageName>snappy_devel</PackageName>
 			<PossibleNames>snappy_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>subversion</GenericName>
+			<PackageName>subversion_devel</PackageName>
 			<PossibleNames>subversion_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>suitesparse</GenericName>
-			<PossibleNames>suitesparse_devel, suitesparse5_devel</PossibleNames>
+			<PackageName>suitesparse5_devel suitesparse_devel</PackageName>
+			<PossibleNames>suitesparse5_devel, suitesparse_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>superlu</GenericName>
+			<PackageName>superlu_devel</PackageName>
 			<PossibleNames>superlu_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>swig</GenericName>
+			<PackageName>swig</PackageName>
 			<PossibleNames>swig</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>tcl</GenericName>
+			<PackageName>tcl_devel</PackageName>
 			<PossibleNames>tcl_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>tesseract</GenericName>
-			<PossibleNames>tesseract_devel, tesseract_data</PossibleNames>
+			<PackageName>tesseract_data tesseract_devel</PackageName>
+			<PossibleNames>tesseract_data, tesseract_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>xorg-video</GenericName>
+			<PackageName>libxcb_devel xorgproto</PackageName>
 			<PossibleNames>libxcb_devel, xorgproto</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>tiff</GenericName>
+			<PackageName>tiff_devel</PackageName>
 			<PossibleNames>tiff_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>tinyxml</GenericName>
-			<PossibleNames>tinyxml_devel, tinyxml2_devel</PossibleNames>
+			<PackageName>tinyxml2_devel tinyxml_devel</PackageName>
+			<PossibleNames>tinyxml2_devel, tinyxml_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>uuid</GenericName>
+			<PackageName>libuuid_devel</PackageName>
 			<PossibleNames>libuuid_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>vorbis-development</GenericName>
+			<PackageName>libvorbis_devel</PackageName>
 			<PossibleNames>libvorbis_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>vulkan-development</GenericName>
+			<PackageName>vulkan_devel</PackageName>
 			<PossibleNames>vulkan_devel</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>wine</GenericName>
+			<PackageName>wine_bin</PackageName>
 			<PossibleNames>wine_bin</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>xorg-development</GenericName>
-			<PossibleNames>xorgproto, libxcb_devel, xlibe_devel</PossibleNames>
+			<PackageName>libxcb_devel xlibe_devel xorgproto</PackageName>
+			<PossibleNames>libxcb_devel, xlibe_devel, xorgproto</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>yasm</GenericName>
+			<PackageName>yasm</PackageName>
 			<PossibleNames>yasm</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>Rscript</GenericName>
+			<PackageName>r</PackageName>
 			<PossibleNames>r</PossibleNames>
 		</Package>
 		<Package>
 			<GenericName>qt6-development</GenericName>
+			<PackageName>qt6_declarative_devel</PackageName>
 			<PossibleNames>qt6_declarative_devel</PossibleNames>
 		</Package>
 	</ExternalDependencies>
